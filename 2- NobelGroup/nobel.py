@@ -13,7 +13,7 @@ def createDir(path):
     try:
         os.mkdir(path)
     except OSError:
-        print ("Creation of the directory %s failed" % path)
+        print ("Creation of the directory %s already exist" % path)
     else:
         print ("Successfully created the directory %s " % path)
 
@@ -40,9 +40,9 @@ def getImages(filename,page):
             imgurl = base_url[:-1] + img['href']
             if not path.exists(filename + str(name) + '.png'):
                 downloadImage(filename + str(name) + '.png',imgurl)
-                print(filename,"indirildi")
+                print(filename + str(name),"downloaded")
             else:
-                print(filename,"zaten var_________________________________________________")
+                print(filename + str(name),"already exist_________________________________________________")
             name += 1
 
 def getSubCategories(category, url):

@@ -14,9 +14,9 @@ def createDir(path):
     try:
         os.mkdir(path)
     except OSError:
-        print ("%s - klasör zaten var" % path)
+        print ("%s - folder already exist!" % path)
     else:
-        print ("%s - klasör olusturuldu" % path)
+        print ("%s - folder created! " % path)
 
 def downloadImage(filename, url):
     if not path.exists(filename):
@@ -25,9 +25,9 @@ def downloadImage(filename, url):
         opener.addheaders = [('User-agent', 'Mozilla/5.0')]
         urllib.request.install_opener(opener)
         urllib.request.urlretrieve(url, filename)
-        print(filename,"- resim indirildi")
+        print(filename,"- image downloaded.")
     else:
-        print(filename,"- resim zaten var")
+        print(filename,"- image already exist.")
 
 def getImages(dirname,page):
     response = None
@@ -36,7 +36,7 @@ def getImages(dirname,page):
             response = requests.get(page, timeout=10)
         except Exception as e:
             print(page,e)
-            print("Tekrar deneniyor...")
+            print("Tryin again...")
             response = None
     page = soup(response.content, "lxml")
 ######################################## SITEYE GORE AYARLANMASI GEREK baslangic ########################################
@@ -63,7 +63,7 @@ def getAllImages():
             response = requests.get(url, timeout=5)
         except Exception as e:
             print(url,e)
-            print("Tekrar deneniyor...")
+            print("Tryin again...")
             response = None
     page = soup(response.content, "lxml")
 ######################################## SITEYE GORE AYARLANMASI GEREK baslangic ########################################

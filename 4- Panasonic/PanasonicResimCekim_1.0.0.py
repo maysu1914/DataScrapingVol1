@@ -19,9 +19,9 @@ def createDir(path):
             os.mkdir(newPath)
         except OSError:
             if path.split('\\').index(tempPath) == len(path.split('\\'))-1:
-                print ("%s - klasör zaten var" % newPath)
+                print ("%s - folder already exist!" % newPath)
         else:
-            print ("%s - klasör olusturuldu" % newPath)
+            print ("%s - folder created!" % newPath)
 
 def downloadImage(filename, url):
     if not path.exists(filename):
@@ -30,9 +30,9 @@ def downloadImage(filename, url):
         opener.addheaders = [('User-agent', 'Mozilla/5.0')]
         urllib.request.install_opener(opener)
         urllib.request.urlretrieve(url, filename)
-        print(filename,"- resim indirildi")
+        print(filename,"- image downloaded.")
     else:
-        print(filename,"- resim zaten var")
+        print(filename,"- image already exist.")
 
 def getImages(category,url):
     response = None
@@ -41,7 +41,7 @@ def getImages(category,url):
             response = requests.get(url, timeout=10)
         except Exception as e:
             print(url,e)
-            print("Tekrar deneniyor...")
+            print("Trying again...")
             response = None
     page = soup(response.content, "lxml")
 ######################################## SITEYE GORE AYARLANMASI GEREK baslangic ########################################
@@ -65,7 +65,7 @@ def getAllLinks():
             response = requests.get(url, timeout=5)
         except Exception as e:
             print(url,e)
-            print("Tekrar deneniyor...")
+            print("Trying again...")
             response = None
     page = soup(response.content, "lxml")
 ######################################## SITEYE GORE AYARLANMASI GEREK baslangic ########################################
